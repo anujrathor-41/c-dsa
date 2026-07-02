@@ -15,23 +15,47 @@
 //     }
 // };
 
-class Solution {
+// class Solution {// top down
+// public:
+
+// int solve(int m,int n,int i,int j,vector<vector<int>> &dp){
+//     if(dp[i][j]!=-1)return dp[i][j];
+//     return dp[i][j]=solve(m,n,i+1,j,dp) + solve(m,n,i,j+1,dp);
+// }
+
+//     int uniquePaths(int m, int n) {//without using memset or sir ka tarika
+//        vector<vector<int>> dp(m,vector<int> (n,-1));// placing -1 in grid
+//         for(int i=0;i<m;i++){
+//             dp[i][n-1] =1;// 1 dal diya col last col main
+//         }
+//         for(int j=0;j<n;j++){
+//             dp[m-1][j]=1;
+//         }
+//         return solve(m,n,0,0,dp);
+        
+//     }
+// };
+
+
+class Solution {// bottom upand  use karte hai loop and usi function ko complete karte hai
 public:
 
-int solve(int m,int n,int i,int j,vector<vector<int>> &dp){
-    if(dp[i][j]!=-1)return dp[i][j];
-    return dp[i][j]=solve(m,n,i+1,j,dp) + solve(m,n,i,j+1,dp);
-}
+
 
     int uniquePaths(int m, int n) {//without using memset or sir ka tarika
        vector<vector<int>> dp(m,vector<int> (n,-1));// placing -1 in grid
         for(int i=0;i<m;i++){
-            dp[i][n-1] =1;
+            dp[i][n-1] =1;// 1 dal diya col last col main
         }
         for(int j=0;j<n;j++){
             dp[m-1][j]=1;
         }
-        return solve(m,n,0,0,dp);
+        for(int i=m-2;i>=0;i--){
+            for(int j=n-2;j>=0;j--){
+                dp[i][j] = dp[i][j+1] + dp[i+1][j];
+            }
+        }
+        return dp[0][0]; // ans kaha hoga 
         
     }
 };
