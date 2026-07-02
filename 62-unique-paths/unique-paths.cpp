@@ -59,6 +59,20 @@
         
 //     }
 // };
+// class Solution {// space optimization and using only 1d arr 
+// public:
+
+//     int uniquePaths(int m, int n) {
+//        vector<int> dp(n,1);// declare 1d dp
+//        for(int i=1;i<=m-1;i++){
+//         for(int j=n-2;j>=0;j--){
+//             dp[j]=dp[j] + dp[j+1];
+//         }
+//        }
+//        return dp[0]; // kyu 1d arr hai aur hamara ans 0index ki dp main hoga
+//     }
+// };
+
 class Solution {// space optimization and using only 1d arr 
 public:
 
@@ -70,9 +84,5 @@ public:
         }
        }
        return dp[0]; // kyu 1d arr hai aur hamara ans 0index ki dp main hoga
-
-
-        
-        
     }
 };
