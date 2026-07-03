@@ -13,18 +13,16 @@ public:
         if (t[n][W] != -1)
             return t[n][W];
 
-        int notTake = solve(n - 1, W, val, wt);
-
-        int take = 0;
-
         if (wt[n - 1] <= W) {
 
-            // Continue taking numbers
-            if (solve(n, W - wt[n - 1], val, wt) != 0)
-                take = val[n - 1] * solve(n, W - wt[n - 1], val, wt);
+           return  t[n][W]= max(val[n-1] * solve(n, W-wt[n-1] ,val,wt), solve(n-1,W,val,wt));
+           
+        }
+        else{
+           return t[n][W]= solve(n-1,W,val,wt);
         }
 
-        return t[n][W] = max(take, notTake);
+        
     }
 
     int integerBreak(int n) {
@@ -39,6 +37,6 @@ public:
 
         memset(t, -1, sizeof(t));
 
-        return solve(n - 1, n, val, wt);
+        return solve(val.size() , n, val, wt);
     }
 };
