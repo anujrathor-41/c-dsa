@@ -9,9 +9,10 @@ public:
      int mx=INT_MIN;
      while(i<=j){
          int sum=nums[i] + nums[j];
-         mx=max(mx,sum);
+         
            i++;
            j--;
+           mx=max(mx,sum);
 
      }   
      return mx;
