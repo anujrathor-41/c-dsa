@@ -12,7 +12,14 @@ public:
             mp[fruits[j]]++;
 
             if(mp.size()<2){
-                mx=max(mx,j-i+1);
+                mx=max(mx,j-i+1);// this add new thing in format
+                
+// fruits = [1]
+// mp.size() = 1
+// Your code only does j++
+// mx remains 0
+// Answer returned is 0, but it should be 1.
+
                 j++;
             }
             else if(mp.size()==2){// hit the window
