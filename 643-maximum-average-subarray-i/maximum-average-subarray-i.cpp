@@ -7,6 +7,7 @@ public:
      int j=0;
      double mx=INT_MIN;
      double sum=0;
+     int start=0;
 
      while(j<n){
         sum=sum+arr[j];
@@ -15,6 +16,7 @@ public:
             j++;
         }else if(j-i+1==k){
             mx=max(mx,sum/k);
+            start=i;
 
              sum=sum-arr[i];
              i++;
