@@ -7,7 +7,7 @@ int solve(int n){
         if(t[n]!=-1) return t[n];
         int left=solve(n-1);
         int right=solve(n-2);
-        return left+right;
+        return t[n] =left+right;
 }
     int fib(int n) {
         memset(t,-1,sizeof(t));
