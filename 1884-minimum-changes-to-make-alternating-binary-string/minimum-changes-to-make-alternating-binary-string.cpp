@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minOperations(string s) {
+        // patern 1        010101
+        // pattern 2        101010
+        int cnt1=0;
+        int cnt2=0;
+        for(int i=0;i<s.size();i++){
+            if(i%2==0){
+                if(s[i]!='0'){
+                    cnt1++;
+                }
+            }
+            else{
+                    if(s[i]!='1'){
+                        cnt1++;
+                    }
+                }
+
+            if(i%2==0){
+                if(s[i]!='1'){
+                    cnt2++;
+                }
+            }
+            else{
+                    if(s[i]!='0'){
+                        cnt2++;
+                    }
+                }
+        }
+        return min(cnt1,cnt2);
+    }
+};
