@@ -3,7 +3,7 @@ public:
 int t[101];
 int solve(vector<int> & arr,int n){
     if(n<=0) return 0;
-
+    if(n==1) return arr[0];
     if(t[n]!=-1) return t[n];
 
     return t[n] =max(solve(arr,n-2)+ arr[n-1],solve(arr,n-1));
