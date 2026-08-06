@@ -3,7 +3,7 @@ public:
 int t[101];
 
     int solve(vector<int> & arr,int n){
-        if(n==0) return 0;
+        if(n<=0) return 0;
         if(n==1) return arr[0];
         if(t[n]!=-1) return t[n];
 
