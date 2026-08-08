@@ -1,38 +1,24 @@
 class Solution {
 public:
+int tt[1001][1001];
 
-    int t[1001][1001];
+int solve(string &s,string &t,int m,int n){
+    
+    if(n==0) return 1;
+    if(m==0) return 0;// target is zero ,it came after
+    if(tt[m][n] != -1) return tt[m][n];
 
-    int solve(string &s, string &target, int m, int n)
-    {
-        // Target becomes empty
-        if(n == 0)
-            return 1;
-
-        // Source becomes empty
-        if(m == 0)
-            return 0;
-
-        if(t[m][n] != -1)
-            return t[m][n];
-
-        if(s[m-1] == target[n-1])
-        {
-            return t[m][n] =
-                solve(s, target, m-1, n-1) +
-                solve(s, target, m-1, n);
-        }
-        else
-        {
-            return t[m][n] =
-                solve(s, target, m-1, n);
-        }
+    if(s[m-1]==t[n-1]){
+        return tt[m][n]= solve(s,t,m-1,n-1)+solve(s,t,m-1,n);
+    }else{
+        return tt[m][n]=solve(s,t,m-1,n);
     }
-
-    int numDistinct(string s, string target)
-    {
-        memset(t, -1, sizeof(t));
-
-        return solve(s, target, s.size(), target.size());
+    
+}
+    int numDistinct(string s, string t) {
+        int m=s.size();
+        int n=t.size();
+        memset(tt,-1,sizeof(tt));
+        return solve(s,t,m,n);
     }
 };
