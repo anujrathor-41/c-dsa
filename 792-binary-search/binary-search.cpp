@@ -1,20 +1,17 @@
 class Solution {
 public:
-    int search(vector<int>& arr, int target) {
-        
+    int search(vector<int>& arr, int tar) {
         int n=arr.size();
-        int left=0;
-        int right=n-1;
-        while(left<=right){
-            int mid=(left+right)/2;
-
-            if(arr[mid]==target){
+        int s=0;
+        int e=n-1;
+        while(s<=e){
+            int mid=(s+e)/2;
+            if(arr[mid]==tar){
                 return mid;
-            }else if(arr[mid]<target){
-                left=mid+1;
-
-            }else if(arr[mid]>target){
-                right=mid-1;
+            }else if(arr[mid]<tar){
+                s=mid+1;
+            }else{
+                e=mid-1;
             }
         }
         return -1;
