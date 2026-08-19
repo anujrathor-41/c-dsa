@@ -9,6 +9,9 @@ public:
        
         while (s <= e) {
             int mid = (s + e) / 2;
+            if(arr.size()<hr){
+                return -1;
+            }
              int curr = 0;
         int days = 1;
             for (int i = 0; i < arr.size(); i++) {
