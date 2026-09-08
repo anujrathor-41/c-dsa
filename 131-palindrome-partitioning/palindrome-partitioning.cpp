@@ -55,6 +55,62 @@
 //         return ans;
 //     }
 // };
+
+
+
+
+// class Solution { 
+// public: 
+ 
+//     bool isPalindrome(string &s, int start, int end) { 
+ 
+//         while(start < end) { 
+ 
+//             if(s[start] != s[end]) 
+//                 return false; 
+ 
+//             start++; 
+//             end--; 
+//         } 
+ 
+//         return true; 
+//     } 
+ 
+//     void solve(string &s, int idx, 
+//                vector<string> temp, 
+//                vector<vector<string>>& ans) { 
+ 
+//         if(idx == s.size()) { 
+//             ans.push_back(temp); 
+//             return; 
+//         } 
+ 
+//         for(int i = idx; i < s.size(); i++) { 
+ 
+//             if(isPalindrome(s, idx, i)) { 
+ 
+//                 string str = s.substr(idx, i - idx + 1); 
+ 
+//                 // Fresh copy for this choice 
+//                 vector<string> newTemp = temp; 
+ 
+//                 newTemp.push_back(str); 
+ 
+//                 solve(s, i + 1, newTemp, ans); 
+//             } 
+//         } 
+//     } 
+ 
+//     vector<vector<string>> partition(string s) { 
+ 
+//         vector<vector<string>> ans; 
+//         vector<string> temp; 
+ 
+//         solve(s, 0, temp, ans); 
+ 
+//         return ans; 
+//     } 
+// };
 class Solution { 
 public: 
  
@@ -88,11 +144,12 @@ public:
                 string str = s.substr(idx, i - idx + 1); 
  
                 // Fresh copy for this choice 
-                vector<string> newTemp = temp; 
+                // vector<string> newTemp = temp; 
  
-                newTemp.push_back(str); 
- 
-                solve(s, i + 1, newTemp, ans); 
+                // newTemp.push_back(str); 
+                temp.push_back(str);
+                solve(s, i + 1, temp, ans); 
+                temp.pop_back();
             } 
         } 
     } 
